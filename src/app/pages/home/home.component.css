@@ -1,0 +1,73 @@
+.digital_library_home-container_side-bar{
+    background-color: black;
+    height: 170vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+}
+
+.digital_library_home-container_playlist-container{
+    background-color: #121212;
+    height: 100vh;
+
+}
+
+.digital_library_home-container_playlist-container{
+    background-color: #1e1e1e;
+    height: 100vh;
+    padding: 0px;
+
+}
+
+.playlist_card_collections{
+    display: grid;
+    gap: 50px;
+    max-width: 1500px;
+    height: 2vh;
+    position: absolute;
+    justify-content: flex-start;
+    grid-template-columns: repeat(auto-fill, minmax(calc(100% / 6), 1fr)); /* Ajusta este valor según el número de elementos que quieras mostrar por fila */
+    
+
+}
+
+#card_item{
+    min-width: 185px;
+}
+
+.digital_library_home-container{
+    width: auto;
+    background-color: #1e1e1e;
+    overflow-x: hidden;
+    height: 140vh;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .digital_library_home-container{
+        width: auto;
+        background-color: #1e1e1e;
+        overflow-x: hidden;
+        height: 160vh;
+        width: 160vw;
+    
+    }
+    .playlist_card_collections{
+        display: grid;
+        gap: 50px;
+        max-width: 1500px;
+        height: 2vh;
+        position: absolute;
+        justify-content: flex-start;
+        grid-template-columns: repeat(auto-fill, minmax(calc(100% / 6), 1fr)); /* Ajusta este valor según el número de elementos que quieras mostrar por fila */
+        
+    
+    }
+    
+  }
+
+
+
+

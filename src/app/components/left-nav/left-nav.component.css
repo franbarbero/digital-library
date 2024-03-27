@@ -1,0 +1,12 @@
+.digital_library_home-container_side-bar-item{
+    font-size: 16px;
+    color: white;
+    width: 100%;
+    margin: 10px;
+    padding-left: 18px;
+}
+
+.digital_library_home-container_side-bar-item > a:hover{
+    cursor: pointer;
+    color: rgb(168, 166, 166);
+}

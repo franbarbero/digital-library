@@ -1,0 +1,50 @@
+.digital_library_song-card{
+    height: 270px;
+    width: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 185px;
+    align-items: center; 
+    background-color: #1a1a1a;
+    border-radius: 12 px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ }
+ 
+ .digital_library_song-card_inner{
+ text-align: center;
+  }
+ 
+ .digital_library_song-card:hover{
+    background-color: #313131;
+    border-radius: 15 px;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+ 
+ .digital_library-card_title{
+     font-size: 14px;
+     font-weight: bold;
+     text-align: center;
+     letter-spacing: 0.3px;
+     word-spacing: 0.4px;
+     color: white;
+     margin-top: 8px;
+     text-transform: capitalize;
+ 
+     
+ }
+ 
+ .digital_library-card_thumbnail{
+     background-color: rgba(0, 0, 0, 0.24);
+     padding: 30px;
+     width: 230px;
+     border-radius: 12px;
+ }
+ 
+ .digital_library-card_description{
+     color: rgb(168, 168, 168);
+     width: 230px;
+     text-align: center;
+ 
+ }

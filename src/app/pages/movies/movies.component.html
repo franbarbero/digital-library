@@ -1,0 +1,24 @@
+<div>
+    <div class="digital_library_home-container row">
+        <div class="digital_library_home-container_side-bar col-2">
+            <app-left-nav></app-left-nav>
+        </div>
+        <div class="digital_library_home-container_playlist-container col-12">
+            <app-top-nav></app-top-nav>
+            
+            <div style="padding-top: 50px; margin-left: 20%;" class="mt-5 container-fluid row">
+                <h4 style="color: white; ">Películas</h4>
+                <input class="input" type="text" [(ngModel)]="searchText" (input)="filterBooks()" placeholder="Buscar por título">
+                <div style="padding-top: 100px;" class="playlist_card_collections">
+                    <div id="card_item" *ngFor = "let movie of filteredMovies">
+                        <app-movie-card 
+                        [title]="movie.title" 
+                        [description]="movie.score">
+                        </app-movie-card> 
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>

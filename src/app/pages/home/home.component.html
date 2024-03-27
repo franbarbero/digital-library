@@ -1,0 +1,51 @@
+<div>
+    <div class="digital_library_home-container row">
+        <div class="digital_library_home-container_side-bar col-2">
+            <app-left-nav></app-left-nav>
+        </div>
+        <div class="digital_library_home-container_playlist-container col-12">
+            <app-top-nav></app-top-nav>
+            
+            <div style="padding-top: 50px; margin-left: 20%;" class="mt-5 container-fluid row">
+                <h4 style="color: white; ">Top Videojuegos</h4>
+                <div style="padding-top: 60px;" class="playlist_card_collections">
+                    <div id="card_item" *ngFor = "let game of top5GameCards">
+                        <app-game-card 
+                        [title]="game.title" 
+                        [description]="game.score">
+                        </app-game-card> 
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 300px; margin-left: 20%;" class="mt-5 container-fluid row">
+                <h4 style="color: white; ">Top Películas</h4>
+                <div style="padding-top: 60px;" class="playlist_card_collections">
+                    <div id="card_item" *ngFor = "let movie of top5MovieCards">
+                        <app-movie-card 
+                        [title]="movie.title" 
+                        [description]="movie.score" >
+                        </app-movie-card> 
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 300px; margin-left: 20%;" class="mt-5 container-fluid row">
+                <h4 style="color: white; ">Top Libros electrónicos</h4>
+                <div style="padding-top: 60px;" class="playlist_card_collections">
+                    <div id="card_item" *ngFor = "let book of top5BooksCards">
+                        <app-book-card 
+                        [title]="book.title" 
+                        [description]="book.score">
+                        </app-book-card> 
+                    </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+
+    </div>
+    
+</div>
