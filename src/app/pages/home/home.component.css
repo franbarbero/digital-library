@@ -45,6 +45,18 @@
     
 }
 
+.result{
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.result:hover{
+    background-color: #313131;
+    border-radius: 15 px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     .digital_library_home-container{
         width: auto;
@@ -63,7 +75,7 @@
         justify-content: flex-start;
         grid-template-columns: repeat(auto-fill, minmax(calc(100% / 6), 1fr)); /* Ajusta este valor según el número de elementos que quieras mostrar por fila */
         
-    
+        
     }
     
   }

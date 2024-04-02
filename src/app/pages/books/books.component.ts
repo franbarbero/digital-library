@@ -20,7 +20,7 @@ export class BooksComponent {
   public booksCards:any;
   filteredBooks: any[] = [];
   searchText: string = '';
-
+  searchDate: string = '';
   constructor(private libraryService: LibraryService, private router: Router){
 
   }
@@ -34,21 +34,34 @@ export class BooksComponent {
   }
 
   filterBooks(): void {
-    if (this.searchText.trim() === '') {
-      // Si el texto de búsqueda está vacío, muestra todos los juegos
-      this.filteredBooks = this.booksCards;
-    } else {
-      // Filtra los juegos que coinciden con el texto de búsqueda en el título
-      this.filteredBooks = this.booksCards.filter((book: { title: string; }) =>
+    // Filtra los libros que coinciden con el texto de búsqueda en el título
+    let filteredByTitle = this.booksCards.filter((book: { title: string; }) =>
         book.title.toLowerCase().includes(this.searchText.toLowerCase())
-      );
+    );
+
+    // Filtra los libros por fecha si hay una fecha seleccionada
+    if (this.searchDate) {
+        const selectedDate = new Date(this.searchDate);
+        filteredByTitle = filteredByTitle.filter((book: { creationDate: Date; }) =>
+            new Date(book.creationDate).toDateString() === selectedDate.toDateString()
+        );
     }
-  }
+
+    // Asigna los libros filtrados en la variable filteredBooks
+    this.filteredBooks = filteredByTitle;
+}
 
   editBook(book: Book)
   {
     console.log("edit book", book)
     this.router.navigate(['/books', book.id])
+      window.scrollTo(0, 0);
+  }
+
+  newBook()
+  {
+    console.log("new book")
+    this.router.navigate(['/books/new'])
       window.scrollTo(0, 0);
   }
 }

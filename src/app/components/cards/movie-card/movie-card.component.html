@@ -4,6 +4,10 @@
             <img [src]="'assets\\movie_icon.png'" width="120" alt="thumbnail">
         </div>
         <div class="digital_library-card_title">{{title}}</div>
-        <div class="digital_library-card_description">{{description}} </div>
+        <div class="digital_library-card_description">{{description}}</div>
+        <div class="digital_library-card_description">({{creationDate}})</div>
+        <br>
+        <div style="font-size: 13px; font-style: italic;" class="digital_library-card_description">Última modificación: {{lastModificationDate}}</div>
+
     </div>
 </div>

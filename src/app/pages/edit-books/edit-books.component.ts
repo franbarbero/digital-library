@@ -6,6 +6,8 @@ import { LibraryService } from '../../services/library.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BookCardComponent } from "../../components/cards/book-card/book-card.component";
+import { ItemPresentationComponent } from "../../components/item-presentation/item-presentation.component";
 
 
 @Component({
@@ -13,14 +15,15 @@ import { Router } from '@angular/router';
     standalone: true,
     templateUrl: './edit-books.component.html',
     styleUrl: './edit-books.component.css',
-    imports: [LeftNavComponent, TopNavComponent, FormsModule]
+    imports: [LeftNavComponent, TopNavComponent, FormsModule, BookCardComponent, ItemPresentationComponent]
 })
 export class EditBooksComponent implements OnInit {
     
     bookToEdit: any
 
-    input2: string = '';
-    input3: number = 0;
+    inputTitle: string = '';
+    inputScore: number = 0;
+    inputDescription: string = '';
 
     constructor(private libraryService: LibraryService, private route: ActivatedRoute, private router: Router){
 
@@ -30,17 +33,20 @@ export class EditBooksComponent implements OnInit {
         this.bookToEdit = this.libraryService.getBookbyId(this.route.snapshot.paramMap.get('id'))
         console.log(this.bookToEdit)
 
-        this.input2 = this.bookToEdit['title']
-        this.input3 = this.bookToEdit['score']
+        this.inputTitle = this.bookToEdit['title']
+        this.inputScore = this.bookToEdit['score']
+        this.inputDescription = this.bookToEdit['synopsis']
+
 
     }
 
     submitForm(): void {
 
-        console.log('Valor de Input 2:', this.input2);
-        console.log('Valor de Input 3:', this.input3);
+        console.log('Valor de Input 2:', this.inputTitle);
+        console.log('Valor de Input 3:', this.inputScore);
+        console.log('Valor de Input descripcion:', this.inputDescription);
 
-        let updatedBook = new Book(this.bookToEdit['id'], this.input2, this.input3, this.bookToEdit['creationDate'], new Date())
+        let updatedBook = new Book(this.bookToEdit['id'], this.inputTitle, this.inputScore, this.inputDescription ,this.bookToEdit['creationDate'], new Date())
 
         this.libraryService.updateBook(updatedBook)
 

@@ -5,6 +5,8 @@ import { GameCardComponent } from "../../components/cards/game-card/game-card.co
 import { LibraryService } from '../../services/library.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Game } from '../../models/classes/game';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-games',
@@ -17,8 +19,8 @@ export class GamesComponent {
   public gamesCards:any;
   filteredGames: any[] = [];
   searchText: string = '';
-
-  constructor(private libraryService: LibraryService){
+  searchDate: string = '';
+  constructor(private libraryService: LibraryService, private router: Router){
   this.filteredGames = this.gamesCards;
   }
 
@@ -31,14 +33,34 @@ export class GamesComponent {
   }
 
   filterGames(): void {
-    if (this.searchText.trim() === '') {
-      // Si el texto de búsqueda está vacío, muestra todos los juegos
-      this.filteredGames = this.gamesCards;
-    } else {
-      // Filtra los juegos que coinciden con el texto de búsqueda en el título
-      this.filteredGames = this.gamesCards.filter((game: { title: string; }) =>
+    // Filtra los juegos que coinciden con el texto de búsqueda en el título
+    let filteredByTitle = this.gamesCards.filter((game: { title: string; }) =>
         game.title.toLowerCase().includes(this.searchText.toLowerCase())
-      );
+    );
+
+    // Filtra los juegos por fecha si hay una fecha seleccionada
+    if (this.searchDate) {
+        const selectedDate = new Date(this.searchDate);
+        filteredByTitle = filteredByTitle.filter((game: { creationDate: Date; }) =>
+            new Date(game.creationDate).toDateString() === selectedDate.toDateString()
+        );
     }
+
+    // Asigna los juegos filtrados en la variable filteredGames
+    this.filteredGames = filteredByTitle;
+}
+
+  editGame(game: Game)
+  {
+    console.log("edit game", game)
+    this.router.navigate(['/games', game.id])
+      window.scrollTo(0, 0);
+  }
+
+  newGame()
+  {
+    console.log("new game")
+    this.router.navigate(['/games/new'])
+      window.scrollTo(0, 0);
   }
 }

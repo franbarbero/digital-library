@@ -32,5 +32,10 @@ export class LeftNavComponent {
     window.scrollTo(0, 0);
   }
 
+  navigateToRanking(){
+    this.router.navigate(['/ranking'])
+    window.scrollTo(0, 0);
+  }
+
 
 }

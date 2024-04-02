@@ -30,10 +30,52 @@ export const routes: Routes = [
         ),
     },
     {
+        path: 'books/new',
+        loadComponent: () =>
+            import('./pages/new-book/new-book.component').then(
+            (m) => m.NewBookComponent
+        ),
+    },
+    {
+        path: 'games/new',
+        loadComponent: () =>
+            import('./pages/new-game/new-game.component').then(
+            (m) => m.NewGameComponent
+        ),
+    },
+    {
+        path: 'movies/new',
+        loadComponent: () =>
+            import('./pages/new-movie/new-movie.component').then(
+            (m) => m.NewMovieComponent
+        ),
+    },
+    {
         path: 'books/:id',
         loadComponent: () =>
             import('./pages/edit-books/edit-books.component').then(
             (m) => m.EditBooksComponent
+        ),
+    },
+    {
+        path: 'movies/:id',
+        loadComponent: () =>
+            import('./pages/edit-movies/edit-movies.component').then(
+            (m) => m.EditMoviesComponent
+        ),
+    },
+    {
+        path: 'games/:id',
+        loadComponent: () =>
+            import('./pages/edit-games/edit-games.component').then(
+            (m) => m.EditGamesComponent
+        ),
+    },
+    {
+        path: 'ranking',
+        loadComponent: () =>
+            import('./pages/ranking/ranking.component').then(
+            (m) => m.RankingComponent
         ),
     },
 

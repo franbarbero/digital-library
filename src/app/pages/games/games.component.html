@@ -9,12 +9,26 @@
             
             <div style="padding-top: 50px; margin-left: 20%;" class="mt-5 container-fluid row">
                 <h4 style="color: white; ">Videojuegos</h4>
-                <input class="input" type="text" [(ngModel)]="searchText" (input)="filterGames()" placeholder="Buscar por título">
-                <div style="padding-top: 100px;" class="playlist_card_collections"> 
-                    <div id="card_item" *ngFor = "let game of this.filteredGames">
+                <div style="z-index: 1;" class="form-group col-md-1">
+                    <label for="searchText" style="color: white;">Buscar por título</label>
+                    <input id="searchText" class="form-control form-control-sm" type="text" [(ngModel)]="searchText" (input)="filterGames()" placeholder="Título">
+                </div>
+                <div style="z-index: 1;" class="form-group col-md-1">
+                    <label for="searchDate" style="color: white;">Buscar por fecha</label>
+                    <input id="searchDate" class="form-control form-control-sm" type="date" [(ngModel)]="searchDate" (input)="filterGames()">
+                </div>
+                <div style="z-index: 1;" class="form-group col-md-1">
+                    <div class="mt-2"> 
+                        <button (click)="newGame()" style="width: 90%;" type="submit" class="btn btn-success">Añadir Nuevo Juego</button>
+                    </div>
+                </div>
+                <div style="padding-top: 140px;" class="playlist_card_collections"> 
+                    <div id="card_item" *ngFor = "let game of this.filteredGames"(click)="editGame(game)">
                         <app-game-card 
                         [title]="game.title" 
-                        [description]="game.score">
+                        [description]="game.score"
+                        [creationDate]="game.creationDate.toLocaleDateString()"
+                        [lastModificationDate]="game.lastEditDate.toLocaleDateString()">
                         </app-game-card> 
                     </div>
                 </div>

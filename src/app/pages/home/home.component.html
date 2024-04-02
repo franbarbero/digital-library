@@ -7,41 +7,57 @@
             <app-top-nav></app-top-nav>
             
             <div style="padding-top: 50px; margin-left: 20%;" class="mt-5 container-fluid row">
-                <h4 style="color: white; ">Top Videojuegos</h4>
-                <div style="padding-top: 60px;" class="playlist_card_collections">
-                    <div id="card_item" *ngFor = "let game of top5GameCards">
-                        <app-game-card 
-                        [title]="game.title" 
-                        [description]="game.score">
-                        </app-game-card> 
-                    </div>
-                </div>
-            </div>
+                
+                
 
-            <div style="padding-top: 300px; margin-left: 20%;" class="mt-5 container-fluid row">
-                <h4 style="color: white; ">Top Películas</h4>
-                <div style="padding-top: 60px;" class="playlist_card_collections">
-                    <div id="card_item" *ngFor = "let movie of top5MovieCards">
-                        <app-movie-card 
-                        [title]="movie.title" 
-                        [description]="movie.score" >
-                        </app-movie-card> 
-                    </div>
-                </div>
-            </div>
 
-            <div style="padding-top: 300px; margin-left: 20%;" class="mt-5 container-fluid row">
-                <h4 style="color: white; ">Top Libros electrónicos</h4>
-                <div style="padding-top: 60px;" class="playlist_card_collections">
-                    <div id="card_item" *ngFor = "let book of top5BooksCards">
-                        <app-book-card 
-                        [title]="book.title" 
-                        [description]="book.score">
-                        </app-book-card> 
-                    </div>
-                </div>
-            </div>
+                <div class="mt-6">
+                    
+                  <h3 style="color: white; ">Digital Library</h3> 
+                  <h4 style="color: white; ">Tu librería digital de confianza</h4> 
+                  
+                  <form class="form-inline mt-4">
+                        <div class="form-group col-md-6">
+                            <div style="z-index: 1;" class="form-group col-md-6">
+                                <label for="searchText" style="color: white;">Buscar por título</label>
+                                <input (keydown)="onKeyDown($event)" name="searchText" id="searchText" class="form-control mr-sm-2 mb-2" type="search" [(ngModel)]="searchText" placeholder="Buscar libros, juegos, películas..." aria-label="Buscar" required>
+                            </div>
+                            <div style="z-index: 1;" class="form-group col-md-2">
+                                <label for="searchDate" style="color: white;">Buscar por fecha</label>
+                                <input id="searchDate" name="searchDate" class="form-control form-control-sm mb-4" type="date" [(ngModel)]="searchDate">
+                            </div>
 
+                            <button (click)="submitForm(searchText)" class="btn btn-light my-2 my-sm-0" type="button">Buscar</button>
+                            
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="mt-6" style="padding-top: 80px;">
+                    
+                    <h4 style="color: white; ">Resultados</h4> 
+
+                    <div style="color: white;" class="dropdown">
+                        <div class="form-group col-md-6">
+                        
+                            <div>
+                                <ng-container *ngFor="let item of filteredByTitle">
+                                    <a *ngIf="item.type == 'book'" (click)="editBook(item)"  class="result ">{{ item.title + ' (' + item.creationDate.toLocaleDateString() +')'+ ' - Libro' }}</a> 
+                                    <a *ngIf="item.type == 'game'" (click)="editGame(item)"  class="result ">{{ item.title + ' (' + item.creationDate.toLocaleDateString() +')'+ ' - Videojuego' }}</a> 
+                                    <a *ngIf="item.type == 'movie'" (click)="editMovie(item)"  class="result ">{{ item.title + ' (' + item.creationDate.toLocaleDateString() +')'+ ' - Película'}}</a> 
+                                    <br>
+                                </ng-container>
+                                
+                                
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+  
+                </div>
             
             
         </div>

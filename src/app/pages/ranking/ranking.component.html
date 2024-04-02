@@ -1,0 +1,57 @@
+<div>
+    <div class="digital_library_home-container row">
+        <div class="digital_library_home-container_side-bar col-2">
+            <app-left-nav></app-left-nav>
+        </div>
+        <div class="digital_library_home-container_playlist-container col-12">
+            <app-top-nav></app-top-nav>
+            
+            <div style="padding-top: 50px; margin-left: 20%;" class="mt-5 container-fluid row">
+                <h4 style="color: white; ">Top Videojuegos</h4>
+                <div style="padding-top: 60px;" class="playlist_card_collections">
+                    <div id="card_item" *ngFor = "let game of top5GameCards" (click)="editGame(game)">
+                        <app-game-card 
+                        [title]="game.title" 
+                        [description]="game.score"
+                        [creationDate]="game.creationDate.toLocaleDateString()"
+                        [lastModificationDate]="game.lastEditDate.toLocaleDateString()">
+                        </app-game-card> 
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 310px; margin-left: 20%;" class="mt-5 container-fluid row">
+                <div><h4 style="color: white; ">Top Películas</h4></div>
+                <div style="padding-top: 60px;" class="playlist_card_collections">
+                    <div id="card_item" *ngFor = "let movie of top5MovieCards" (click)="editMovie(movie)">
+                        <app-movie-card 
+                        [title]="movie.title" 
+                        [description]="movie.score"
+                        [creationDate]="movie.creationDate.toLocaleDateString()"
+                        [lastModificationDate]="movie.lastEditDate.toLocaleDateString()">
+                        </app-movie-card> 
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 310px; margin-left: 20%;" class="mt-5 container-fluid row">
+                <h4 style="color: white; ">Top Libros electrónicos</h4>
+                <div style="padding-top: 60px;" class="playlist_card_collections">
+                    <div id="card_item" *ngFor = "let book of top5BooksCards" (click)="editBook(book)">
+                        <app-book-card 
+                        [title]="book.title" 
+                        [description]="book.score"
+                        [creationDate]="book.creationDate.toLocaleDateString()"
+                        [lastModificationDate]="book.lastEditDate.toLocaleDateString()">
+                        </app-book-card> 
+                    </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+
+    </div>
+    
+</div>

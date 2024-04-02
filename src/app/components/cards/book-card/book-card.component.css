@@ -1,5 +1,5 @@
 .digital_library_song-card{
-    height: 270px;
+    height: 310px;
     width: 210px;
     display: flex;
     flex-direction: column;
@@ -46,5 +46,5 @@
      color: rgb(168, 168, 168);
      width: 230px;
      text-align: center;
- 
+
  }

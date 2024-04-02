@@ -8,12 +8,26 @@
             
             <div style="padding-top: 50px; margin-left: 20%;" class="mt-5 container-fluid row">
                 <h4 style="color: white; ">Películas</h4>
-                <input class="input" type="text" [(ngModel)]="searchText" (input)="filterBooks()" placeholder="Buscar por título">
-                <div style="padding-top: 100px;" class="playlist_card_collections">
-                    <div id="card_item" *ngFor = "let movie of filteredMovies">
+                <div style="z-index: 1;" class="form-group col-md-1">
+                    <label for="searchText" style="color: white;">Buscar por título</label>
+                    <input id="searchText" class="form-control form-control-sm" type="text" [(ngModel)]="searchText" (input)="filterMovies()" placeholder="Título">
+                </div>
+                <div style="z-index: 1;" class="form-group col-md-1">
+                    <label for="searchDate" style="color: white;">Buscar por fecha</label>
+                    <input id="searchDate" class="form-control form-control-sm" type="date" [(ngModel)]="searchDate" (input)="filterMovies()">
+                </div>
+                <div style="z-index: 1;" class="form-group col-md-1">
+                    <div class="mt-2"> 
+                        <button (click)="newMovie()" style="width: 90%;" type="submit" class="btn btn-success">Añadir Nueva Película</button>
+                    </div>
+                </div>
+                <div style="padding-top: 140px;" class="playlist_card_collections">
+                    <div id="card_item" *ngFor = "let movie of filteredMovies" (click)="editMovie(movie)">
                         <app-movie-card 
                         [title]="movie.title" 
-                        [description]="movie.score">
+                        [description]="movie.score"
+                        [creationDate]="movie.creationDate.toLocaleDateString()"
+                        [lastModificationDate]="movie.lastEditDate.toLocaleDateString()">
                         </app-movie-card> 
                     </div>
                 </div>

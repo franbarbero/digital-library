@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { LibraryService } from '../../services/library.service';
 import { MovieCardComponent } from "../../components/cards/movie-card/movie-card.component";
 import { FormsModule } from '@angular/forms';
+import { Movie } from '../../models/classes/movie';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-movies',
@@ -19,8 +21,8 @@ export class MoviesComponent implements OnInit{
   public moviesCards:any;
   filteredMovies: any[] = [];
   searchText: string = '';
-
-  constructor(private libraryService: LibraryService){
+  searchDate: string = '';
+  constructor(private libraryService: LibraryService, private router: Router){
 
   }
 
@@ -32,17 +34,35 @@ export class MoviesComponent implements OnInit{
     console.log(this.moviesCards)
   }
 
-  filterBooks(): void {
-    if (this.searchText.trim() === '') {
-      // Si el texto de búsqueda está vacío, muestra todos los juegos
-      this.filteredMovies = this.moviesCards;
-    } else {
-      // Filtra los juegos que coinciden con el texto de búsqueda en el título
-      this.filteredMovies = this.moviesCards.filter((movie: { title: string; }) =>
+  filterMovies(): void {
+    // Filtra los juegos que coinciden con el texto de búsqueda en el título
+    let filteredByTitle = this.moviesCards.filter((movie: { title: string; }) =>
         movie.title.toLowerCase().includes(this.searchText.toLowerCase())
-      );
-    }
-  }
+    );
 
+    // Filtra los juegos por fecha si hay una fecha seleccionada
+    if (this.searchDate) {
+        const selectedDate = new Date(this.searchDate);
+        filteredByTitle = filteredByTitle.filter((movie: { creationDate: Date; }) =>
+            new Date(movie.creationDate).toDateString() === selectedDate.toDateString()
+        );
+    }
+
+    // Asigna los juegos filtrados en la variable filteredMovies
+    this.filteredMovies = filteredByTitle;
+}
+
+  editMovie(movie: Movie)
+  {
+    console.log("edit movie", movie)
+    this.router.navigate(['/movies', movie.id])
+      window.scrollTo(0, 0);
+  }
+  newMovie()
+  {
+    console.log("new movie")
+    this.router.navigate(['/movies/new'])
+      window.scrollTo(0, 0);
+  }
   
 }

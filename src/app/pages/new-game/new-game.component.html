@@ -9,15 +9,10 @@
             <div style="padding-top: 50px; margin-left: 20%;" class="mt-5 container-fluid row">
                 
                 
-              <app-item-presentation 
-              [title]="this.bookToEdit['title']" 
-              [srcImg]="'assets\\book_icon.png'"
-              [synopsis]="this.bookToEdit['synopsis']">
-              </app-item-presentation>
 
 
               <div class="mt-6">
-                <!-- <h4 style="color: white; ">Editar Libro</h4> -->
+                <h4 style="color: white; ">Añadir Juego (Es obligatorio poner un título y una puntuación)</h4> 
                 <form (ngSubmit)="submitForm()" class="mt-3" #formulario="ngForm">
                   <div class="form-row">
                     <div class="form-group col-md-6">
