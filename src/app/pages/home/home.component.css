@@ -28,7 +28,7 @@
     height: 2vh;
     position: absolute;
     justify-content: flex-start;
-    grid-template-columns: repeat(auto-fill, minmax(calc(100% / 6), 1fr)); /* Ajusta este valor según el número de elementos que quieras mostrar por fila */
+    grid-template-columns: repeat(auto-fill, minmax(calc(100% / 6), 1fr)); 
     
 
 }

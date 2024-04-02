@@ -60,12 +60,12 @@ export class HomeComponent implements OnInit{
 
         } 
 
+        this.filteredByTitle = this.filteredItems
+
     }
 
     onKeyDown(event: KeyboardEvent) {
-        // Verifica si la tecla presionada es la tecla "Enter"
         if (event.key === "Enter") {
-          // Lógica que quieres ejecutar cuando se presiona "Enter" en el input
           this.submitForm(this.searchText)
         }
       }
@@ -91,12 +91,11 @@ export class HomeComponent implements OnInit{
 
     submitForm(searchText:string)
     {   
-        console.log(this.searchText)
-        this.filteredByTitle = ''
-        if(this.searchText != '')
+        this.filteredByTitle = []
+        this.filteredByTitle = this.filteredItems
+        if(this.searchText != '' &&  this.searchText != null && this.searchText != undefined)
         {
             
-            // Filtra los libros que coinciden con el texto de búsqueda en el título
             this.filteredByTitle = this.filteredItems.filter((element: { title: string; }) =>
             element.title.toLowerCase().includes(this.searchText.toLowerCase())
 
@@ -104,13 +103,22 @@ export class HomeComponent implements OnInit{
 
             );
 
-        // Filtra los libros por fecha si hay una fecha seleccionada
             if (this.searchDate) {
                 const selectedDate = new Date(this.searchDate);
                 this.filteredByTitle = this.filteredByTitle.filter((element: { creationDate: Date; }) =>
                     new Date(element.creationDate).toDateString() === selectedDate.toDateString()
                 );
             }
+        }
+        else{
+            if (this.searchDate) {
+                const selectedDate = new Date(this.searchDate);
+                this.filteredByTitle = this.filteredItems.filter((element: { creationDate: Date; }) =>
+                    new Date(element.creationDate).toDateString() === selectedDate.toDateString()
+                );
+            }
+        
+
         }
         
 

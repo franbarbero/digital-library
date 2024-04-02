@@ -39,14 +39,14 @@ export class LibraryService{
 
       this.dateDefault.setDate(this.dateDefault.getDate() - 7)
 
-      this.createMovie('El Padrino 2', 8.5, '', this.dateDefault);
-      this.createMovie('El Padrino 2', 4,'', this.dateDefault);
-      this.createMovie('El Padrino 2', 2, '',this.dateDefault);
+      this.createMovie('El Gigante de hierro', 8.5, '', this.dateDefault);
+      this.createMovie('Resident Evil', 4,'', this.dateDefault);
+      this.createMovie('La jungla de cristal', 2, '',this.dateDefault);
 
       this.dateDefault.setDate(this.dateDefault.getDate() - 7)
 
-      this.createMovie('El Padrino 2', 8,'', this.dateDefault);
-      this.createMovie('El Padrino 2', 1, '', this.dateDefault);
+      this.createMovie('Kong: La isla perdida', 8,'', this.dateDefault);
+      this.createMovie('Los Vengadores', 1, '', this.dateDefault);
 
       this.dateDefault.setDate(this.dateDefault.getDate() - 7)
 
@@ -80,14 +80,14 @@ export class LibraryService{
       this.dateDefault.setDate(this.dateDefault.getDate() - 7)
 
 
-      this.createBook('El Quijote', 4,'', this.dateDefault);
-      this.createBook('El Quijote', 2);
+      this.createBook('El cantar de los nibelungos', 4,'', this.dateDefault);
+      this.createBook('La celestina', 2);
 
       this.dateDefault.setDate(this.dateDefault.getDate() - 7)
 
 
-      this.createBook('El Quijote', 8,'', this.dateDefault);
-      this.createBook('El Quijote', 1);
+      this.createBook('Viaje al centro de la Tierra', 8,'', this.dateDefault);
+      this.createBook('Los hijos del trueno', 1);
 
       this.initialized = true;
     }
@@ -220,7 +220,7 @@ export class LibraryService{
   }
 
   getMovies(): Movie[]
-  { console.log("get movies")
+  { 
     return this.movies
   }
 
